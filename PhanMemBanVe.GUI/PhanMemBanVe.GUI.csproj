@@ -230,10 +230,6 @@
     <Content Include="bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll" />
     <Content Include="bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll" />
     <Content Include="bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll" />
-    <Content Include="bin\Debug\SqlServerTypes\x64\msvcr120.dll" />
-    <Content Include="bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll" />
-    <Content Include="bin\Debug\SqlServerTypes\x86\msvcr120.dll" />
-    <Content Include="bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll" />
     <Content Include="bin\Debug\stdole.dll" />
     <Content Include="bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll" />
     <Content Include="bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll" />
@@ -249,18 +245,6 @@
     <Content Include="Resources\blue-add-button-12025 %281%29.png" />
     <Content Include="Resources\blue-add-button-12025.png" />
     <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PhanMemBanVe.BUS\PhanMemBanVe.BUS.csproj">

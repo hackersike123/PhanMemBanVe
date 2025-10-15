@@ -1,4 +1,4 @@
-﻿using PhanMemBanVe.BUS.Utils;
+using PhanMemBanVe.BUS.Utils;
 using PhanMemBanVe.DAL.Data;
 using System;
 using System.Collections.Generic;
@@ -40,7 +40,7 @@ namespace PhanMemBanVe.GUI
                 MessageBox.Show("Please enter both username and password.");
                 return;
             }
-            using (var context = new Data.TicketManagementContext())
+            using (var context = new TicketManagementContext())
             {
                 var user = context.Users.FirstOrDefault(u => u.UserName == username);
                 if (user != null)

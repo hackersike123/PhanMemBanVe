@@ -102,6 +102,7 @@
             this.mnuReportStatistics.Name = "mnuReportStatistics";
             this.mnuReportStatistics.Size = new System.Drawing.Size(298, 40);
             this.mnuReportStatistics.Text = "Báo cáo thống kê";
+            this.mnuReportStatistics.Click += new System.EventHandler(this.MnuReportStatistics_Click);
             // 
             // FormMain
             // 

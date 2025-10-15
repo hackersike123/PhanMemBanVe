@@ -11,6 +11,7 @@ namespace PhanMemBanVe.GUI
             InitializeComponent();
             mnuLogin.Click += MnuLogin_Click;
             menuExit.Click += MenuExit_Click;
+            mnuReportStatistics.Click += MnuReportStatistics_Click;
         }
 
         private void MenuExit_Click(object sender, EventArgs e)
@@ -93,6 +94,26 @@ namespace PhanMemBanVe.GUI
                 StartPosition = FormStartPosition.CenterScreen
             };
             rpt.Show();
+        }
+
+        private void MnuReportStatistics_Click(object sender, EventArgs e)
+        {
+            // Open Activity Statistics Report
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is FormActivityStatistics)
+                {
+                    form.BringToFront();
+                    return;
+                }
+            }
+
+            var stats = new FormActivityStatistics
+            {
+                MdiParent = this,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            stats.Show();
         }
     }
 }

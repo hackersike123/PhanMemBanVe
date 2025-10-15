@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition"
+        xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <rd:ReportID>b4e5dc84-51c4-4b63-9af5-6d8f01c91877</rd:ReportID>
+  <AutoRefresh>0</AutoRefresh>
+
+  <!-- DataSource khai báo kiểu DataSet nội bộ để bind object list -->
+  <DataSources>
+    <DataSource Name="DummyDataSource">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:DataSourceID>0a111111-aaaa-bbbb-cccc-123456789000</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+
+  <DataSets>
+    <DataSet Name="TicketSalesDataSet">
+      <Fields>
+        <Field Name="TicketCode"><DataField>TicketCode</DataField><rd:TypeName>System.String</rd:TypeName></Field>
+        <Field Name="CustomerCode"><DataField>CustomerCode</DataField><rd:TypeName>System.String</rd:TypeName></Field>
+        <Field Name="FullName"><DataField>FullName</DataField><rd:TypeName>System.String</rd:TypeName></Field>
+        <Field Name="Phone"><DataField>Phone</DataField><rd:TypeName>System.String</rd:TypeName></Field>
+        <Field Name="SaleDate"><DataField>SaleDate</DataField><rd:TypeName>System.DateTime</rd:TypeName></Field>
+        <Field Name="SeatNumber"><DataField>SeatNumber</DataField><rd:TypeName>System.Int32</rd:TypeName></Field>
+        <Field Name="AreaName"><DataField>AreaName</DataField><rd:TypeName>System.String</rd:TypeName></Field>
+        <Field Name="Price"><DataField>Price</DataField><rd:TypeName>System.Decimal</rd:TypeName></Field>
+        <Field Name="IsRefunded"><DataField>IsRefunded</DataField><rd:TypeName>System.Boolean</rd:TypeName></Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+
+  <ReportParameters>
+    <ReportParameter Name="DateFrom">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+    </ReportParameter>
+    <ReportParameter Name="DateTo">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+    </ReportParameter>
+    <ReportParameter Name="Area">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+    </ReportParameter>
+  </ReportParameters>
+
+  <Body>
+    <ReportItems>
+      <Textbox Name="Title">
+        <Top>0.1cm</Top><Left>0cm</Left><Height>0.9cm</Height><Width>18cm</Width>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>BÁO CÁO BÁN VÉ</Value>
+                <Style><FontSize>16pt</FontSize><FontWeight>Bold</FontWeight></Style>
+              </TextRun>
+            </TextRuns>
+          </Paragraph>
+        </Paragraphs>
+        <Style><TextAlign>Center</TextAlign><VerticalAlign>Middle</VerticalAlign></Style>
+      </Textbox>
+
+      <Textbox Name="FilterInfo">
+        <Top>1.1cm</Top><Left>0cm</Left><Height>0.6cm</Height><Width>18cm</Width>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>= "Từ ngày: " &amp; Parameters!DateFrom.Value &amp; "  đến ngày: " &amp; Parameters!DateTo.Value &amp;
+ IIF(Parameters!Area.Value = "", "", "  |  Khu vực: " &amp; Parameters!Area.Value)</Value>
+                <Style><FontSize>9pt</FontSize><FontStyle>Italic</FontStyle></Style>
+              </TextRun>
+            </TextRuns>
+          </Paragraph>
+        </Paragraphs>
+        <Style><PaddingLeft>2pt</PaddingLeft></Style>
+      </Textbox>
+
+      <Tablix Name="TablixTicketSales">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn><Width>1.0cm</Width></TablixColumn>
+            <TablixColumn><Width>2.5cm</Width></TablixColumn>
+            <TablixColumn><Width>3.5cm</Width></TablixColumn>
+            <TablixColumn><Width>2.5cm</Width></TablixColumn>
+            <TablixColumn><Width>1.5cm</Width></TablixColumn>
+            <TablixColumn><Width>2.2cm</Width></TablixColumn>
+            <TablixColumn><Width>2.3cm</Width></TablixColumn>
+            <TablixColumn><Width>2.0cm</Width></TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.7cm</Height>
+              <TablixCells>
+                <TablixCell><CellContents><Textbox Name="HdrSTT"><Value>STT</Value><Style><FontWeight>Bold</FontWeight><Border><Style>Solid</Style></Border><TextAlign>Center</TextAlign><VerticalAlign>Middle</VerticalAlign></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="HdrCode"><Value>Mã vé</Value><Style><FontWeight>Bold</FontWeight><Border><Style>Solid</Style></Border></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="HdrName"><Value>Khách hàng</Value><Style><FontWeight>Bold</FontWeight><Border><Style>Solid</Style></Border></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="HdrPhone"><Value>Điện thoại</Value><Style><FontWeight>Bold</FontWeight><Border><Style>Solid</Style></Border></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="HdrSeat"><Value>Ghế</Value><Style><FontWeight>Bold</FontWeight><Border><Style>Solid</Style></Border><TextAlign>Center</TextAlign></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="HdrArea"><Value>Khu vực</Value><Style><FontWeight>Bold</FontWeight><Border><Style>Solid</Style></Border></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="HdrDate"><Value>Ngày bán</Value><Style><FontWeight>Bold</FontWeight><Border><Style>Solid</Style></Border></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="HdrPrice"><Value>Giá</Value><Style><FontWeight>Bold</FontWeight><Border><Style>Solid</Style></Border><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell><CellContents><Textbox Name="DtlSTT"><Value>=RowNumber(Nothing)</Value><Style><Border><Style>Solid</Style></Border><TextAlign>Center</TextAlign></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="DtlTicketCode"><Value>=Fields!TicketCode.Value</Value><Style><Border><Style>Solid</Style></Border></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="DtlFullName"><Value>=Fields!FullName.Value</Value><Style><Border><Style>Solid</Style></Border></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="DtlPhone"><Value>=Fields!Phone.Value</Value><Style><Border><Style>Solid</Style></Border></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="DtlSeat"><Value>=Fields!SeatNumber.Value</Value><Style><Border><Style>Solid</Style></Border><TextAlign>Center</TextAlign></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="DtlArea"><Value>=Fields!AreaName.Value</Value><Style><Border><Style>Solid</Style></Border></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="DtlSaleDate"><Value>=Format(Fields!SaleDate.Value, "dd/MM/yyyy HH:mm")</Value><Style><Border><Style>Solid</Style></Border><FontSize>8pt</FontSize></Style></Textbox></CellContents></TablixCell>
+                <TablixCell><CellContents><Textbox Name="DtlPrice"><Value>=Fields!Price.Value</Value><Style><Border><Style>Solid</Style></Border><Format>N0</Format><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.7cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="LblTotal">
+                      <Value>TỔNG</Value>
+                      <Style><FontWeight>Bold</FontWeight><Border><Style>Solid</Style></Border><TextAlign>Center</TextAlign></Style>
+                    </Textbox>
+                  </CellContents>
+                  <ColSpan>7</ColSpan>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="SumPrice">
+                      <Value>=Sum(Fields!Price.Value)</Value>
+                      <Style><FontWeight>Bold</FontWeight><Border><Style>Solid</Style></Border><Format>N0</Format><TextAlign>Right</TextAlign></Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <DataSetName>TicketSalesDataSet</DataSetName>
+        <Top>2.0cm</Top><Left>0cm</Left><Height>2.6cm</Height><Width>17.5cm</Width>
+      </Tablix>
+    </ReportItems>
+    <Height>6cm</Height>
+  </Body>
+
+  <Width>19cm</Width>
+  <Page>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>1cm</LeftMargin>
+    <RightMargin>1cm</RightMargin>
+    <TopMargin>1cm</TopMargin>
+    <BottomMargin>1cm</BottomMargin>
+  </Page>
+  <Language>vi-VN</Language>
+</Report>
